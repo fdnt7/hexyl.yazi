@@ -4,9 +4,11 @@ function M:peek()
 	local child
 	local l = self.file.cha.length
 	if l == 0 then
-		child = Command("hexyl")
+		child = Command("printf")
 			:args({
-				tostring(self.file.url),
+				"%*s\n",
+				tostring((self.area.w + 10) // 2),
+				"No content",
 			})
 			:stdout(Command.PIPED)
 			:stderr(Command.PIPED)
